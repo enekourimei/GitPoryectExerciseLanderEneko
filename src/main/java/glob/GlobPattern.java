@@ -13,7 +13,20 @@ public class GlobPattern {
     }
 
     public boolean match(String text) {
-        // TODO: not implemented yet
-        return false;
+        if (text == null) {
+            return false;
+        }
+
+        if (text.length() != pattern.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < pattern.length(); i++) {
+            char p = pattern.charAt(i);
+            if (p != '?' && p != text.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
